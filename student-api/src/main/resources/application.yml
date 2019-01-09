@@ -1,0 +1,16 @@
+management:
+  context-path: /actuator
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: student-api
+  cloud:
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckPath: ${management.context-path}/health
+        healthCheckInterval: 15s
+
